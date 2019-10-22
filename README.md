@@ -10,6 +10,7 @@ All created projects store on market, where users could get project info, get pr
     ganache-cli
     Solidity
 
+## Methods:
 
 **getProjectAddress(string memory name)** - ***return Project address by name;***
 
