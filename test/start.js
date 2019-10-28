@@ -35,7 +35,7 @@ contract('Market test', async accounts => {
 		const	market = await Market.deployed();
 
 		let sellTokenAmount = 2;
-		let projectAddress = await market.Projects.call(nameOfProject);
+		let projectAddress = await market.getProjectAddress(nameOfProject);
 		let project = await Project.at(projectAddress);
 
 		await	project.approve(market.address, sellTokenAmount, {

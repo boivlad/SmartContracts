@@ -5,7 +5,7 @@ import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
 contract Market is ERC20{
 
-	mapping(string => Project) public Projects;
+	mapping(string => Project) Projects;
 
 	function createProject (
 		string memory _name,
