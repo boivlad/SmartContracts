@@ -21,31 +21,12 @@ To install and use node LTS version:
 npm install -g truffle
 ```
 
-### _ganache-cli_
-
-https://github.com/trufflesuite/ganache-cli#installation
-
-### _ganache_
-
-https://github.com/trufflesuite/ganache/releases
-
-## _Environment desc_
-
-```bash
-node -v
-v10.16.0
-
-npm -v
-6.9.0
-
-```
-
 ## _Install_
 
 ---
 
 ```bash
-npm i
+$ npm i
 ```
 
 ## _Tests_
@@ -54,7 +35,7 @@ npm i
 
 To run tests:
 
-Start development blockchain with run `truffle test`
+Start development blockchain with run `$ truffle test`
 
 
 ---
