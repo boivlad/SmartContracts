@@ -18,8 +18,7 @@ All created projects store on market, where users could get project info, get pr
 To install and use node LTS version:
 
 ```
-npm install -g truffle && truffle use v5.0.40
-npm install 10.16.3 && npm use v10.16.3
+npm install -g truffle
 ```
 
 ### _ganache-cli_
@@ -55,12 +54,22 @@ npm i
 
 To run tests:
 
-1. Start development blockchain with `ganache-cli` OR Start `Ganache App` and run `npm truffle console`
-
-2. Start tests with `truffle test`
+Start development blockchain with run `truffle test`
 
 
 ---
+## How to use:
+### Create Market
+Use ***deployed***
+### Create Project
+Use method ***createProject(string memory name, string memory description, uint price, uint256 amount)*** by ***Market*** 
+### Buy Shares
+Use ***buyShares(string memory name, uint tokenAmount)*** by ***Market*** 
+### Buy Shares
+Use ***approve(address MarketAddress, uint selltokenAmount)*** by ***Project*** 
+
+Use ***sellShares(string memory name, uint selltokenAmount)*** by ***Market*** 
+
 ## Methods:
 
 **getProjectAddress(string memory name)** - ***return Project address by name;***
