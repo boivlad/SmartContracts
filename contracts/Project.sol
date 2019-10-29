@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 
 contract Project is ERC20 {
 	address owner;
@@ -12,7 +12,7 @@ contract Project is ERC20 {
 		address _owner,
 		string memory _name,
 		string memory _description,
-		uint256 _price,
+		uint _price,
 		uint256 _shares
 	)
 	public
