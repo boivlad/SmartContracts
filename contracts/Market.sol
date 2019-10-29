@@ -21,7 +21,7 @@ contract Market is ERC20 {
 	function multiply(uint shares, uint price) internal pure returns (uint) {
 		require((shares * price) / price == shares, "Market: multyply error");
 		return shares * price;
-   }
+   	}
 	function getProjectAddress(string memory name) public view returns(address) {
 		require(address(Projects[name]) != address(0), 'Project: Name does not exist!');
 		return address(Projects[name]);
