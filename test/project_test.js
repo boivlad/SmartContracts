@@ -27,7 +27,7 @@ contract('Project test', async accounts => {
 		assert.equal(await market.getSharesClientCount(nameOfProject, buyer), TokenAmount);
 	});
 
-  it('Sell Shares', async () => {
+  	it('Sell Shares', async () => {
 		const	market = await Market.deployed();
 		let sellTokenAmount = 2;
 		let projectAddress = await market.getProjectAddress(nameOfProject);
@@ -46,7 +46,7 @@ contract('Project test', async accounts => {
 		assert.equal(await market.getSharesClientCount(nameOfProject, buyer), 10);
 	});
 
-  it('Get Project Info', async () => {
+  	it('Get Project Info', async () => {
 		const	market = await Market.deployed();
 		assert.equal(await getProjectInfo(market, nameOfProject), true);
 	});
