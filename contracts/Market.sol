@@ -1,7 +1,7 @@
 pragma solidity ^0.5.0;
 
-import './Project.sol';
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
+import './Project.sol';
 
 contract Market is ERC20 {
 
