@@ -4,7 +4,6 @@ import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 
 contract Project is ERC20 {
 	address owner;
-	address marketAddress;
 	string name;
 	string description;
 	uint256 currentPrice;
@@ -24,7 +23,6 @@ contract Project is ERC20 {
 		description = _description;
 		defaultPrice = _price;
 		currentPrice = defaultPrice;
-		marketAddress = msg.sender;
 		_mint(msg.sender, _shares);
 	}
 
