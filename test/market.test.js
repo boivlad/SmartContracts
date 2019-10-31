@@ -23,7 +23,7 @@ contract('Test market functions', async accounts => {
 			value: currentPrice * tokenAmount,
 			gas: 1000000
 		});
-		assert.equal(await	market.getSharesCount(nameOfProject), 100 - tokenAmount);
+		assert.equal(await market.getSharesCount(nameOfProject), 100 - tokenAmount);
 		assert.equal(await market.getSharesClientCount(nameOfProject, buyer), tokenAmount);
 	});
 
