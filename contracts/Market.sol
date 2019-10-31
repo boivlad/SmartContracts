@@ -53,7 +53,8 @@ contract Market is ERC20 {
 	}
 
 	function calculatePrice(string memory name) public {
-		Projects[name].setCurrentPrice(Projects[name].totalSupply() * Projects[name].getDefaultPrice() / Projects[name].balanceOf(address(this)));
+		uint256 newPrice = Projects[name].totalSupply() * Projects[name].getDefaultPrice() / Projects[name].balanceOf(address(this))
+		Projects[name].setCurrentPrice(newPrice);
 	}
 
 	function buyShares(string memory name, uint256 _shares) public payable {
