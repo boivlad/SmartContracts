@@ -6,7 +6,8 @@ contract Project is ERC20 {
 	address owner;
 	string name;
 	string description;
-	uint price;
+	uint currentPrice;
+	uint defaultPrice;
 
 	constructor (
 		address _owner,
@@ -20,7 +21,8 @@ contract Project is ERC20 {
 		owner = _owner;
 		name = _name;
 		description = _description;
-		price = _price;
+		defaultPrice = _price;
+		currentPrice = defaultPrice;
 		_mint(msg.sender, _shares);
 	}
 
@@ -31,8 +33,10 @@ contract Project is ERC20 {
 	function getOwner() public view returns(address) {
 		return owner;
 	}
-
+	function calculatePrice() public {
+		currentPrice = this.totalSupply()*this.getPrice()/this.balanceOf(msg.sender);
+	}
 	function getPrice() public view returns(uint) {
-		return price;
+		return currentPrice;
 	}
 }
