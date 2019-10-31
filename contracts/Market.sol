@@ -52,12 +52,16 @@ contract Market is ERC20 {
 		return Projects[name].getPrice();
 	}
 
+	function calculatePrice(string memory name) public {
+		Projects[name].setCurrentPrice(Projects[name].totalSupply() * Projects[name].getDefaultPrice() / Projects[name].balanceOf(address(this)));
+	}
+
 	function buyShares(string memory name, uint256 _shares) public payable {
 		require(address(Projects[name]) != address(0), 'Market: buyShares - Name does not exist!');
 		require(msg.value >= multiply(_shares, getPrice(name)), "Market: buyShares - Incorrect amount!");
 		require(getSharesCount(name) >= _shares, 'Market: buyProjectShares - To many shares you want to buy!');
 		require(Projects[name].transfer(msg.sender, _shares), 'Market: Bad transfer!');
-		Projects[name].calculatePrice();
+		calculatePrice(name);
 	}
 
 	function sellShares(string memory name, uint256 _shares) public payable {
@@ -65,8 +69,9 @@ contract Market is ERC20 {
 		require(Projects[name].balanceOf(msg.sender) >= _shares, 'Market: sellShares - Incorrect amount!');
 		require(Projects[name].transferFrom(msg.sender, address(this), _shares), 'Market:sellShares Bad transfer!');
 		uint256 value = getPrice(name) * _shares;
+		require(address(this).balance >= value, 'Market: sellShares - Incorrect ETH amount!');
 		msg.sender.transfer(value);
-		Projects[name].calculatePrice();
+		calculatePrice(name);
 	}
 
 	function checkContract() public pure returns(bool) {
