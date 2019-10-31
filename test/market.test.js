@@ -3,7 +3,7 @@ const Project = artifacts.require('Project');
 
 contract('Test market functions', async accounts => {
 	it('Should return true when the call function checkContract', async () => {
-		const	market = await Market.deployed();
+		const market = await Market.deployed();
 		assert.equal(await market.checkContract(), true);
 	})
 
@@ -13,12 +13,12 @@ contract('Test market functions', async accounts => {
 		const buyer = accounts[1];
 		const tokenAmount = 12;
 
-		const	market = await Market.deployed();
+		const market = await Market.deployed();
 		await market.createProject(nameOfProject, 'Some description about this project', tokenPrice, 100);
 
 		const currentPrice = await market.getPrice(nameOfProject);
 
-		await	market.buyShares(nameOfProject, tokenAmount, {
+		await market.buyShares(nameOfProject, tokenAmount, {
 			from: buyer,
 			value: currentPrice * tokenAmount,
 			gas: 1000000
@@ -34,7 +34,7 @@ contract('Test market functions', async accounts => {
 		const tokenAmount = 12;
 		const sellTokenAmount = 10;
 
-		const	market = await Market.deployed();
+		const market = await Market.deployed();
 		await market.createProject(nameOfProject, 'Some description about this project', tokenPrice, 100);
 
 		const currentPrice = await market.getPrice(nameOfProject);
@@ -46,11 +46,11 @@ contract('Test market functions', async accounts => {
 		const projectAddress = await market.getProjectAddress(nameOfProject);
 		const project = await Project.at(projectAddress);
 
-		await	project.approve(market.address, sellTokenAmount, {
+		await project.approve(market.address, sellTokenAmount, {
 			from: buyer
 		});
 
-		await	market.sellShares(nameOfProject, sellTokenAmount, {
+		await market.sellShares(nameOfProject, sellTokenAmount, {
 			from: buyer,
 			gas: 1000000
 		});
