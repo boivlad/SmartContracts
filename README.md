@@ -63,3 +63,21 @@ Use ***sellShares(string memory name, uint selltokenAmount)*** by ***Market***
 
 **getSharesCount(string memory name)** - ***return available count of shares by name;***
 
+## How deploy to TestNet
+
+> 1. Create project on [Infura](https://infura.io/dashboard)
+> 2. Create your wallet with 2+ ETH for transactions & Get mnemonic
+> 3. In truffle-config.js
+
+* set your mnemonic(12 word)
+* set ropsten ENDPOINT from Infura (https://ropsten.infura.io/v3/<ProjectID>)
+    
+> 4. Delete folder 'build'
+> 5. In Terminal your Project insert:
+
+* $ truffle compile
+* $ truffle deploy --network ropsten
+* **contract address you can get from console after successful deploy**
+
+> 6. File 'build/contracts/NameofContract.json' it's your deploy Contract!
+
