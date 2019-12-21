@@ -14,7 +14,7 @@ contract('Test all Project functions', async () => {
 
 	it('Get project address', async () => {
 		const tokenPrice = 9000000000000000;
-		const nameOfProject = 'FirstProject';
+		const nameOfProject = 'FirstProject1';
 
 		const market = await Market.deployed();
 		await market.createProject(nameOfProject, 'Some description about this project', tokenPrice, 100);
@@ -24,7 +24,7 @@ contract('Test all Project functions', async () => {
 
 	it('Get project owner address', async () => {
 		const tokenPrice = 9000000000000000;
-		const nameOfProject = 'FirstProject';
+		const nameOfProject = 'FirstProject2';
 
 		const market = await Market.deployed();
 		await market.createProject(nameOfProject, 'Some description about this project', tokenPrice, 100);
@@ -34,7 +34,7 @@ contract('Test all Project functions', async () => {
 
 	it('Get project description', async () => {
 		const tokenPrice = 9000000000000000;
-		const nameOfProject = 'FirstProject';
+		const nameOfProject = 'FirstProject3';
 
 		const market = await Market.deployed();
 		await market.createProject(nameOfProject, 'Some description about this project', tokenPrice, 100);
@@ -44,7 +44,7 @@ contract('Test all Project functions', async () => {
 
 	it('Get project shares price', async () => {
 		const tokenPrice = 9000000000000000;
-		const nameOfProject = 'FirstProject';
+		const nameOfProject = 'FirstProject4';
 
 		const market = await Market.deployed();
 		await market.createProject(nameOfProject, 'Some description about this project', tokenPrice, 100);
@@ -54,7 +54,7 @@ contract('Test all Project functions', async () => {
 	
 	it('Get shares count', async () => {
 		const tokenPrice = 9000000000000000;
-		const nameOfProject = 'FirstProject';
+		const nameOfProject = 'FirstProject5';
 
 		const market = await Market.deployed();
 		await market.createProject(nameOfProject, 'Some description about this project', tokenPrice, 100);

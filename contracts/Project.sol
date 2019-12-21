@@ -8,7 +8,6 @@ contract Project is ERC20 {
 	string description;
 	uint256 currentPrice;
 	uint256 defaultPrice;
-
 	constructor (
 		address _owner,
 		string memory _name,

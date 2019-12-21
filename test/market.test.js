@@ -1,6 +1,5 @@
 const Market = artifacts.require('Market');
 const Project = artifacts.require('Project');
-
 contract('Test market functions', async accounts => {
 	it('Should return true when the call function checkContract', async () => {
 		const market = await Market.deployed();
@@ -12,7 +11,6 @@ contract('Test market functions', async accounts => {
 		const nameOfProject = 'FirstProject';
 		const buyer = accounts[1];
 		const tokenAmount = 12;
-
 		const market = await Market.deployed();
 		await market.createProject(nameOfProject, 'Some description about this project', tokenPrice, 100);
 
@@ -44,12 +42,13 @@ contract('Test market functions', async accounts => {
 			gas: 1000000
 		});
 		const projectAddress = await market.getProjectAddress(nameOfProject);
-		const project = await Project.at(projectAddress);
-
+		// const project = await Project.at(projectAddress);
+		// console.dir(await Project.at());
+		const project = await Market.at(projectAddress);
 		await project.approve(market.address, sellTokenAmount, {
 			from: buyer
 		});
-
+		// console.dir(market.ProjectsList);
 		await market.sellShares(nameOfProject, sellTokenAmount, {
 			from: buyer,
 			gas: 1000000

@@ -6,6 +6,7 @@ import './Project.sol';
 contract Market is ERC20 {
 
 	mapping(string => Project) Projects;
+	string[] ProjectsList;
 
 	function createProject (
 		string memory name,
@@ -14,14 +15,17 @@ contract Market is ERC20 {
 		uint256 _shares
 	)
 	public returns(Project) {
+		require(address(Projects[name]) == address(0), 'Create project: Project with this name already exists');
 		Project newProject = new Project(msg.sender, name, description, _price, _shares);
 		Projects[name] = newProject;
+		ProjectsList.push(name);
 		return newProject;
 	}
 	function multiply(uint shares, uint price) internal pure returns (uint) {
 		require(price == 0 || (shares * price) / price == shares, "Market: multyply error");
 		return shares * price;
-   	}
+	}
+
 	function getProjectAddress(string memory name) public view returns(address) {
 		require(address(Projects[name]) != address(0), 'Project: Name does not exist!');
 		return address(Projects[name]);
@@ -53,8 +57,8 @@ contract Market is ERC20 {
 	}
 
 	function calculatePrice(string memory name) public {
-		Project project = Project[name];
-		uint256 newPrice = project.totalSupply() * project.getDefaultPrice() / project.balanceOf(address(this));
+		uint256 balance = Projects[name].balanceOf(address(this));
+		uint256 newPrice = Projects[name].totalSupply() * Projects[name].getDefaultPrice() / balance;
 		Projects[name].setCurrentPrice(newPrice);
 	}
 
